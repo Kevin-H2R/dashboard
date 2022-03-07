@@ -11,6 +11,21 @@ export default new Vuex.Store({
   mutations: {
     setTasks(state, tasks) {
       state.tasks = tasks
+    },
+    addTask(state, task) {
+      state.tasks.push(task)
+    },
+    deleteTask(state, id) {
+      let index = -1
+      for (let i = 0; i < state.tasks.length; ++i) {
+        if (state.tasks[i].id === id) {
+          index = i
+          break
+        }
+      }
+      if (index !== -1) {
+        state.tasks.splice(index, 1)
+      }
     }
   },
   actions: {
@@ -25,7 +40,10 @@ export default new Vuex.Store({
   },
   getters: {
     taskCount: state => state.tasks.length,
-    tasks: state => state.tasks
+    tasks: state => state.tasks.map(t => {
+      t.done = t.done === 1
+      return t
+    })
   },
   modules: {
   }
