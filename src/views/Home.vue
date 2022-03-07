@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid pa-5>
     <v-row>
       <todo-container />
     </v-row>
