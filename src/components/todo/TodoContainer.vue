@@ -18,7 +18,7 @@
             class="overflow-y-auto mylist"
             v-else
           >
-            <v-list-item-group multiple active-class="''">
+            <v-list-item-group multiple>
               <todo-item
                 v-for="(task, index) in $store.getters.tasks"
                 :key="'task_' + index"
@@ -46,33 +46,39 @@ export default {
         return;
       }
       axios
-        .post("http://localhost:3000/todo", { name: this.newTask })
+        .post("http://" + process.env.VUE_APP_HOST + ":3000/todo", {
+          name: this.newTask,
+        })
         .then((res) => {
           const task = res.data.task;
           if (task) {
-            this.$store.commit("addTask", task);
+            this.$store.commit("resetTodo")
+            this.$store.dispatch("fetchTodo");
             this.newTask = "";
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
   },
   computed: {
-    taskCount() {
-      return this.$store.getters.taskCount;
+    loadingTasks() {
+      return this.$store.getters.loadingTasks;
     },
     tasks() {
       return this.$store.getters.tasks;
     },
   },
   watch: {
-    taskCount() {
+    loadingTasks() {
       this.loading = false;
     },
   },
   data() {
     return {
       newTask: "",
-      loading: true,
+      loading: this.$store.getters.loadingTasks,
     };
   },
 };
@@ -96,5 +102,4 @@ export default {
   border: solid 3px #202020;
   border-radius: 7px;
 }
-
 </style>

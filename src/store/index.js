@@ -6,14 +6,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tasks: []
+    tasks: [],
+    loadingTasks: true
   },
   mutations: {
     setTasks(state, tasks) {
       state.tasks = tasks
+      state.loadingTasks = false
     },
-    addTask(state, task) {
-      state.tasks.push(task)
+    resetTodo(state) {
+      state.tasks = []
+      state.loadingTasks = true
     },
     deleteTask(state, id) {
       let index = -1
@@ -39,11 +42,8 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    taskCount: state => state.tasks.length,
-    tasks: state => state.tasks.map(t => {
-      t.done = t.done === 1
-      return t
-    })
+    loadingTasks: state => state.loadingTasks,
+    tasks: state => state.tasks
   },
   modules: {
   }

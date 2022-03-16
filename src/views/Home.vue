@@ -1,7 +1,9 @@
 <template>
   <v-container fluid pa-5>
     <v-row>
-      <todo-container />
+      <v-col>
+        <todo-container />
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -12,8 +14,7 @@ import TodoContainer from '../components/todo/TodoContainer.vue'
 
 export default {
   name: 'Home',
-  components: {
-    TodoContainer,
-  }
+  components: {TodoContainer}
 }
 </script>
+    WodContainer

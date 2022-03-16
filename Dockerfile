@@ -1,12 +1,6 @@
 
-FROM node:lts-alpine as dev
-WORKDIR /app
-COPY package.json /app/package.json
-RUN npm install
-RUN npm install @vue/cli -g
-CMD ["npm", "run", "serve"]
-
 FROM node:lts-alpine as build-stage
+ARG VUE_APP_HOST
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
