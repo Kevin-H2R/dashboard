@@ -13,10 +13,13 @@
         <v-row>
           <div v-html="description"/>
         </v-row>
+        <v-row class="mb-7">
+          <v-divider/>
+        </v-row>
         <v-row v-show="$store.getters.cookie === null">
           <v-btn color="primary" @click="login()" >Login</v-btn>
         </v-row>
-        <v-row v-show="$store.getters.cookie !== null">
+        <v-row v-show="$store.getters.cookie !== null && !registered">
           <v-col cols="4">
             <register-button :time="7"/>
           </v-col>
@@ -25,6 +28,12 @@
           </v-col>
           <v-col cols="4">
             <register-button :time="9"/>
+          </v-col>
+        </v-row>
+        <v-row justify="center" v-show="$store.getters.cookie !== null && registered">
+          <v-col cols="10" class="text-center">
+            <div>Booked at {{ time }}pm.</div>
+            <v-btn color="warning" @click="cancel()">Cancel</v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -53,20 +62,29 @@ export default {
     login: function () {
       axios.get("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/login")
         .then(res => {
-          console.log(res)
-          this.$store.commit('setCookie', res.data)
+          this.$store.commit('setCookie', res.data.cookie)
+          this.registered = res.data.registered
+          this.time = res.data.time
         })
         .catch(err => {
           console.log(err)
         })
     },
     register: function (time) {
-      axios.post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/register", {cookie: this.cookie, time: time})
-        .then(res => {
-          console.log(res)
+      axios.post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/register", {cookie: this.$store.getters.cookie, time: time})
+        .then(() => {
+          this.registered = true
+          this.time = time
         })
         .catch(err => {
           console.log(err)
+        })
+    },
+    cancel: function () {
+      axios.post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/cancel", {cookie: this.$store.getters.cookie, time: this.time})
+        .then(() => {
+          this.registered = null
+          this.time = null
         })
     }
   },
@@ -75,7 +93,8 @@ export default {
       loading: true,
       title: "",
       description: "",
-      cookie: null
+      registered: null,
+      time: null
     };
   },
 };
