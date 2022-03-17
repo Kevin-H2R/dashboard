@@ -1,5 +1,5 @@
 <template>
-  <v-card class="todo-container" width="400">
+  <v-card class="todo-container">
     <v-card-title>Todo</v-card-title>
     <v-divider></v-divider>
     <v-card-text>

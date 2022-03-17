@@ -1,10 +1,10 @@
 <template>
   <v-container fluid pa-5>
-    <v-row>
-      <v-col class="flex-shrink-1 flex-grow-0">
+    <v-row justify="space-around">
+      <v-col cols="12" sm="6" lg=4>
         <todo-container />
       </v-col>
-      <v-col class="flex-shrink-1 flex-grow-0">
+      <v-col cols="12" sm="6" lg=4>
         <wod-container />
       </v-col>
     </v-row>

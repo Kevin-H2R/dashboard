@@ -7,9 +7,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     tasks: [],
-    loadingTasks: true
+    loadingTasks: true,
+    cookie: null
   },
   mutations: {
+    setCookie(state, cookie) {
+      state.cookie = cookie
+    },
     setTasks(state, tasks) {
       state.tasks = tasks
       state.loadingTasks = false
@@ -43,7 +47,8 @@ export default new Vuex.Store({
   },
   getters: {
     loadingTasks: state => state.loadingTasks,
-    tasks: state => state.tasks
+    tasks: state => state.tasks,
+    cookie: state => state.cookie
   },
   modules: {
   }
