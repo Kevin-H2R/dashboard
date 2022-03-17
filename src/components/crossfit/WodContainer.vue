@@ -1,9 +1,14 @@
 <template>
-  <v-card>
+  <v-card  width="400">
     <v-card-title>WOD</v-card-title>
+    <v-divider></v-divider>
     <v-card-text>
-      <v-container id="wod_content">
-        <v-progress-circular color="primary" indeterminate />
+      <v-container v-if="loading">
+        <v-progress-circular color="primary" indeterminate/>
+      </v-container>
+      <v-container v-else>
+        <h2 class="mb-5 text-decoration-underline">{{ title }}</h2>
+        <div v-html="description"/>
       </v-container>
     </v-card-text>
   </v-card>
@@ -13,9 +18,12 @@ import axios from "axios";
 export default {
   name: "wod-container",
   created() {
-    axios.get("http://crossfitzone.cafe24.com/wod.php")
+    const that = this
+    axios.get("http://" + process.env.VUE_APP_HOST + ":3000/crossfit")
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        that.title = response.data.title
+        that.description = response.data.description
+        that.loading = false
       })
       .catch(function (error) {
         console.log(error);
@@ -24,6 +32,8 @@ export default {
   data() {
     return {
       loading: true,
+      title: "",
+      description: ""
     };
   },
 };

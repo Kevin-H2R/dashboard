@@ -67,7 +67,8 @@ export default {
           id: this.id,
         })
         .then(() => {
-          this.$store.commit("deleteTask", this.id);
+          this.$store.commit("resetTodo", this.id);
+          this.$store.dispatch("fetchTodo");
         });
     },
   },
