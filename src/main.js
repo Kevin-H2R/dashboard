@@ -5,6 +5,7 @@ import store from './store'
 import router from './router'
 
 Vue.config.productionTip = false
+require('dotenv').config()
 
 new Vue({
   vuetify,

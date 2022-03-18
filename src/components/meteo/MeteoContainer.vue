@@ -36,10 +36,10 @@ export default {
   created: function () {
     axios
       .get(
-        "https://api.openweathermap.org/data/2.5/weather?lat=37.559079&lon=126.926567&appid=0bcb4ec7fcada4d78ca4b61072fd9bf9&units=metric"
+        "https://api.openweathermap.org/data/2.5/weather?lat=37.559079&lon=126.926567&appid=" + 
+          process.env.VUE_APP_OPEN_WEATHER_API + "&units=metric"
       )
       .then((response) => {
-        console.log(response.data);
         const weatherData = response.data.weather.shift();
         this.weather = weatherData.main;
         this.loading = false;

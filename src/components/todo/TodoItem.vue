@@ -73,9 +73,6 @@ export default {
     },
   },
   data() {
-    if (this.id === 2) {
-      console.log(this.done);
-    }
     return {
       isDone: this.done,
     };
