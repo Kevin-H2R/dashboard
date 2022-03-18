@@ -38,7 +38,6 @@ export default {
       )
       .then((response) => {
         this.results = response.data.data;
-        console.log(response);
         this.loading = false;
       });
   },

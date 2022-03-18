@@ -24,11 +24,12 @@ export default {
     register: function (time) {
       axios
         .post(
-          "http://" + process.env.VUE_APP_HOST + ":3000/crossfit/register",
-          { cookie: this.$store.getters.cookie, time: time }
+          "http://" + process.env.VUE_APP_HOST + ":3000/attendance",
+          { cookie: this.$store.getters.cookie, time: time, login: this.$store.getters.login}
         )
-        .then((res) => {
-          console.log(res);
+        .then(() => {
+          this.$store.commit('setRegistered', true)
+          this.$store.commit('setTime', time)
         })
         .catch((err) => {
           console.log(err);
