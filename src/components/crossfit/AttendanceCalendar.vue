@@ -23,7 +23,6 @@ export default {
     axios
       .get("http://" + process.env.VUE_APP_HOST + ":3000/attendance/kebinou")
       .then((res) => {
-        console.log(res)
         this.dates = res.data;
       });
   },
