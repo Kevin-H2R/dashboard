@@ -3,14 +3,15 @@
     <v-row justify="space-around">
       <v-col cols="12" sm="6" lg="4">
         <todo-container class="mb-2" />
-        <meteo-container v-if="$vuetify.breakpoint.mdAndDown" />
+        <meteo-container v-if="$vuetify.breakpoint.mdAndDown" class="mb-2" />
       </v-col>
       <v-col cols="12" sm="6" lg="4">
         <wod-container class="mb-2" />
-        <attendance-calendar />
+        <attendance-calendar class="mb-2" />
       </v-col>
       <v-col cols="12" sm="6" lg="4">
-        <meteo-container v-if="$vuetify.breakpoint.lgAndUp" />
+        <meteo-container v-if="$vuetify.breakpoint.lgAndUp" class="mb-2" />
+        <nba-container class="mb-2" />
       </v-col>
     </v-row>
   </v-container>
@@ -21,6 +22,7 @@ import WodContainer from "../components/crossfit/WodContainer.vue";
 import TodoContainer from "../components/todo/TodoContainer.vue";
 import MeteoContainer from "../components/meteo/MeteoContainer.vue";
 import AttendanceCalendar from "../components/crossfit/AttendanceCalendar.vue";
+import NbaContainer from "../components/nba/NbaContainer.vue";
 // @ is an alias to /src
 
 export default {
@@ -30,6 +32,7 @@ export default {
     WodContainer,
     MeteoContainer,
     AttendanceCalendar,
+    NbaContainer,
   },
 };
-</script>
+</script>,
