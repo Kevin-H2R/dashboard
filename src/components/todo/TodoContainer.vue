@@ -5,10 +5,16 @@
     <v-card-text>
       <v-container>
         <v-row align="center" class="mb-8">
-          <v-text-field hide-details label="New task" v-model="newTask" />
-          <v-btn color="primary" fab small @click="uploadNewTask()"
-            ><v-icon>mdi-plus</v-icon></v-btn
-          >
+          <v-form style="width: 100%" @submit.prevent="uploadNewTask()">
+            <v-container>
+              <v-row>
+                <v-text-field hide-details label="New task" v-model="newTask" />
+                <v-btn color="primary" fab small @click="uploadNewTask()">
+                  <v-icon>mdi-plus</v-icon>
+                </v-btn>
+              </v-row>
+            </v-container>
+          </v-form>
         </v-row>
         <v-row justify="center">
           <v-progress-circular indeterminate color="primary" v-if="loading" />
@@ -53,7 +59,7 @@ export default {
         .then((res) => {
           const task = res.data.task;
           if (task) {
-            this.$store.commit("resetTodo")
+            this.$store.commit("resetTodo");
             this.$store.dispatch("fetchTodo");
             this.newTask = "";
           }
