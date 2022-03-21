@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card color="grey darken-4" class="my-2">
     <v-card-text>
       <v-container>
         <v-row align="center">

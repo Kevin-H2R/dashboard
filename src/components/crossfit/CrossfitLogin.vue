@@ -46,6 +46,7 @@ export default {
           password: this.password,
         })
         .then((res) => {
+          this.$store.commit("setLogin", this.login);
           this.$store.commit("setCookie", res.data.cookie);
           this.$store.commit("setRegistered", res.data.registered);
           this.$store.commit("setTime", res.data.time);
