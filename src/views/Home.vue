@@ -2,7 +2,11 @@
   <v-container fluid pa-5>
     <v-row justify="space-around">
       <v-col cols="12" sm="6" lg="4">
-        <time-clock class="mb-2" />
+        <v-row>
+          <v-col cols="12" sm="6">
+            <time-clock class="mb-2" />
+          </v-col>
+        </v-row>
         <todo-container class="mb-2" />
         <meteo-container v-if="$vuetify.breakpoint.mdAndDown" class="mb-2" />
       </v-col>
