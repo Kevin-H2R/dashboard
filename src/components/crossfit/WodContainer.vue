@@ -60,9 +60,9 @@ export default {
       .catch(function (error) {
         console.log(error);
       });
-    axios.get("https://api.spoonacular.com/recipes/complexSearch?cuisine=korean&apiKey=ef2882e6ba4349018aac939383028252").then(response => {
-      console.log(response)
-    })
+    // axios.get("https://api.spoonacular.com/recipes/complexSearch?cuisine=korean&apiKey=ef2882e6ba4349018aac939383028252").then(response => {
+    //   console.log(response)
+    // })
   },
   methods: {
     cancel: function () {

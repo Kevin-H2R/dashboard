@@ -59,9 +59,9 @@ export default {
   methods: {
     upload() {
       axios.post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/session", 
-        {id: this.selectedSession, performance: this.performance})
-        .then(() => {
-
+        {sessionId: this.selectedSession, performance: this.performance})
+        .then((res) => {
+          this.$store.commit('addResult', res.data)
         })
     },
   },

@@ -12,8 +12,15 @@ export default new Vuex.Store({
     login: null,
     registered: null,
     time: null,
+    results: []
   },
   mutations: {
+    setResults(state, results) {
+      state.results = results
+    },
+    addResult(state, result) {
+      state.results.unshift(result)
+    },
     setRegistered(state, registered) {
       state.registered = registered
     },
@@ -64,6 +71,7 @@ export default new Vuex.Store({
     login: state => state.login,
     registered: state => state.registered,
     time: state => state.time,
+    results: state => state.results,
   },
   modules: {
   }
