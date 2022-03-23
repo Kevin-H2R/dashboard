@@ -1,7 +1,12 @@
 <template>
   <v-app>
-    <v-main>
-      <router-view/>
+    <v-app-bar fixed elevate-on-scroll dense>
+      <v-btn text>Home</v-btn>
+      <v-btn text>Coding</v-btn>
+      <v-btn text>Food</v-btn>
+    </v-app-bar>
+    <v-main class="pt-8">
+      <router-view />
     </v-main>
   </v-app>
 </template>
