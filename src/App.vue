@@ -1,11 +1,11 @@
 <template>
   <v-app>
     <v-app-bar fixed elevate-on-scroll dense>
-      <v-btn text>Home</v-btn>
-      <v-btn text>Coding</v-btn>
-      <v-btn text>Food</v-btn>
+      <v-btn text plain to="/">Home</v-btn>
+      <v-btn text plain to="/code">Coding</v-btn>
+      <v-btn text plain to="/food">Food</v-btn>
     </v-app-bar>
-    <v-main class="pt-8">
+    <v-main class="pt-12">
       <router-view />
     </v-main>
   </v-app>
