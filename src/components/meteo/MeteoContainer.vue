@@ -19,10 +19,10 @@
             />
           </v-col>
           <v-col>
-              <div>Temparature</div><div><b class="text-h3">{{ Math.round(temperature) }}</b>°C</div>
+              <div>Temparature</div><div><b class="text-h4">{{ Math.round(temperature) }}</b>°C</div>
           </v-col>
           <v-col>
-              <div>Feels like:</div><div><b class="text-h3">{{ Math.round(feelsLike)}}</b>°C</div>
+              <div>Feels like:</div><div><b class="text-h4">{{ Math.round(feelsLike)}}</b>°C</div>
           </v-col>
         </v-row>
       </v-container>
