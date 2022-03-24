@@ -19,7 +19,7 @@
               <v-expansion-panel-header color="grey darken-3">
                 {{ result.title }} ({{ result.date.substring(0, 10) }})
               </v-expansion-panel-header>
-              <v-expansion-panel-content color="grey darken-4"
+              <v-expansion-panel-content color="grey darken-4 pa-5"
                 v-html="result.performance"
               ></v-expansion-panel-content>
             </v-expansion-panel>
