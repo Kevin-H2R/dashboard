@@ -6,7 +6,7 @@
       <v-container v-if="loading">
         <v-progress-circular indeterminate />
       </v-container>
-      <v-container v-else class="overflow-y-auto mylist" style="max-height: 600px; ">
+      <v-container v-else class="overflow-y-auto mylist" style="max-height: 600px;">
         <v-row justify="center" class="my-6">{{ yesterdayDate }}</v-row>
         <nba-result
           v-for="(result, index) in results"

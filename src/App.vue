@@ -4,6 +4,7 @@
       <v-btn text plain to="/">Home</v-btn>
       <v-btn text plain to="/code">Coding</v-btn>
       <v-btn text plain to="/food">Food</v-btn>
+      <v-btn text plain to="/random">Random</v-btn>
     </v-app-bar>
     <v-main class="pt-12">
       <router-view />

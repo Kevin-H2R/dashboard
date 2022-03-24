@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import CodingView from '../views/CodingView.vue'
 import FoodView from '../views/FoodView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
+import RandomView from '../views/RandomView.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/food',
     name: 'food',
     component: FoodView
+  },
+  {
+    path: '/random',
+    name: 'random',
+    component: RandomView
   },
   {
     path: '/*',
