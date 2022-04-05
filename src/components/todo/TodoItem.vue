@@ -12,8 +12,8 @@
       <v-list-item-content>
         <v-list-item-title
           :class="isDone ? 'text-decoration-line-through' : ''"
-          >{{ title }}</v-list-item-title
-        >
+          >{{ titleData }}
+        </v-list-item-title>
       </v-list-item-content>
       <v-list-item-action>
         <v-menu offset-y>
@@ -23,12 +23,33 @@
             </v-btn>
           </template>
           <v-list>
+            <v-list-item @click="modifyDialog = true">
+              <v-list-item-title>Modify</v-list-item-title>
+            </v-list-item>
             <v-list-item @click="deleteTask()">
               <v-list-item-title>Delete</v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
       </v-list-item-action>
+      <v-dialog v-model="modifyDialog" width="500">
+        <v-card>
+          <v-card-title>Modify</v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-text-field v-model="titleData"/>
+              </v-row>
+              <v-row>
+                <v-textarea v-model="descriptionData" background-color="grey darken-4"/>
+              </v-row>
+              <v-row>
+                <v-btn @click="modifyTask()" color="primary" :loading="modifyLoading">Modify</v-btn>
+              </v-row>
+            </v-container>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </template>
   </v-list-item>
 </template>
@@ -61,6 +82,21 @@ export default {
         done: this.isDone,
       });
     },
+    modifyTask() {
+      this.modifyLoading = true
+      axios
+        .post("http://" + process.env.VUE_APP_HOST + ":3000/todo/modify", {
+          id: this.id,
+          title: this.titleData,
+          description: this.descriptionData
+        })
+        .then(() => {
+          this.modifyDialog = false
+          this.modifyLoading = false
+          this.$store.commit("resetTodo", this.id);
+          this.$store.dispatch("fetchTodo");
+        });
+    },
     deleteTask() {
       axios
         .post("http://" + process.env.VUE_APP_HOST + ":3000/todo/delete", {
@@ -75,6 +111,10 @@ export default {
   data() {
     return {
       isDone: this.done,
+      modifyDialog: false,
+      titleData: this.title,
+      descriptionData: this.description,
+      modifyLoading: false
     };
   },
 };

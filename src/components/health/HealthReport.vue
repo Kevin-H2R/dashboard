@@ -10,7 +10,6 @@
           height="100"
           padding="24"
           stroke-linecap="round"
-          auto-draw-duration="1000"
           smooth
           auto-draw
           :key="sparklineKey"
@@ -25,9 +24,9 @@
 export default {
   name: "health-report",
   created() {
-    setInterval(() => {
-      this.sparklineKey += 1
-    }, 3000)
+    // setInterval(() => {
+    //   this.sparklineKey += 1
+    // }, 3000)
   },
   props: {
     values: {
