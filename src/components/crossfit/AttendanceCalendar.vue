@@ -13,15 +13,6 @@
               readonly
             />
           </v-col>
-          <v-col cols="12" class="my-2 text-center">
-            <h3>Nara ({{ datesNara.length }} sessions)</h3>
-            <v-date-picker
-              no-title
-              v-model="datesNara"
-              multiple
-              readonly
-            />
-          </v-col>
         </v-row>
       </v-container>
     </v-card-text>
