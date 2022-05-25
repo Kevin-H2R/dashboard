@@ -56,7 +56,7 @@ export default new Vuex.Store({
   },
   actions: {
     fetchTodo: function (context) {
-      axios.get('http://' + process.env.VUE_APP_HOST + ':3000/todo')
+      axios.get(process.env.VUE_APP_HOST + ':3000/todo')
         .then(res => {
           context.commit('setTasks', res.data.tasks)
         }).catch(err => {

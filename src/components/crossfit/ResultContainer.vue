@@ -37,7 +37,7 @@ export default {
   components: { NewResultForm },
   created() {
     axios
-      .get("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/result")
+      .get(process.env.VUE_APP_HOST + ":3000/crossfit/result")
       .then((response) => {
         this.$store.commit('setResults', response.data)
         this.loading = false;

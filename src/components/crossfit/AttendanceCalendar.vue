@@ -23,12 +23,12 @@ import axios from "axios";
 export default {
   name: "attendance-calendar",
   created: function () {
-    axios.get("http://" + process.env.VUE_APP_HOST + ":3000/attendance/kebinou")
+    axios.get(process.env.VUE_APP_HOST + ":3000/attendance/kebinou")
       .then((res) => {
         this.datesKebinou = res.data;
       });
       
-    axios.get("http://" + process.env.VUE_APP_HOST + ":3000/attendance/nara")
+    axios.get(process.env.VUE_APP_HOST + ":3000/attendance/nara")
       .then((res) => {
         this.datesNara = res.data;
       });

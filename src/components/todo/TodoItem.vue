@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     toggleTask() {
-      axios.post("http://" + process.env.VUE_APP_HOST + ":3000/todo/toggle", {
+      axios.post(process.env.VUE_APP_HOST + ":3000/todo/toggle", {
         id: this.id,
         done: this.isDone,
       });
@@ -85,7 +85,7 @@ export default {
     modifyTask() {
       this.modifyLoading = true
       axios
-        .post("http://" + process.env.VUE_APP_HOST + ":3000/todo/modify", {
+        .post(process.env.VUE_APP_HOST + ":3000/todo/modify", {
           id: this.id,
           title: this.titleData,
           description: this.descriptionData
@@ -99,7 +99,7 @@ export default {
     },
     deleteTask() {
       axios
-        .post("http://" + process.env.VUE_APP_HOST + ":3000/todo/delete", {
+        .post(process.env.VUE_APP_HOST + ":3000/todo/delete", {
           id: this.id,
         })
         .then(() => {

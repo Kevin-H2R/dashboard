@@ -24,8 +24,8 @@ export default {
     register: function (time) {
       axios
         .post(
-          "http://" + process.env.VUE_APP_HOST + ":3000/attendance",
-          { cookie: this.$store.getters.cookie, time: time, login: this.$store.getters.login}
+          process.env.VUE_APP_HOST + ":3000/attendance",
+          {time: time}, {withCredentials: true}
         )
         .then(() => {
           this.$store.commit('setRegistered', true)

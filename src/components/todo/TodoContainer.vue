@@ -53,7 +53,7 @@ export default {
         return;
       }
       axios
-        .post("http://" + process.env.VUE_APP_HOST + ":3000/todo", {
+        .post(process.env.VUE_APP_HOST + ":3000/todo", {
           name: this.newTask,
         })
         .then((res) => {

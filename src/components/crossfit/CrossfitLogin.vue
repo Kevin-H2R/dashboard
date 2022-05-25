@@ -1,7 +1,7 @@
 <template>
   <v-form @submit.prevent="loginClick()">
     <v-container>
-      <v-row v-show="$store.getters.cookie === null">
+      <v-row v-show="$store.getters.login === null">
         <v-col>
           <v-row justify="space-between">
             <v-text-field
@@ -41,13 +41,12 @@ export default {
   methods: {
     loginClick: function () {
       axios
-        .post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/login", {
+        .post(process.env.VUE_APP_HOST + ":3000/crossfit/login", {
           login: this.login,
           password: this.password,
-        })
+        }, {withCredentials: true})
         .then((res) => {
           this.$store.commit("setLogin", this.login);
-          this.$store.commit("setCookie", res.data.cookie);
           this.$store.commit("setRegistered", res.data.registered);
           this.$store.commit("setTime", res.data.time);
         })

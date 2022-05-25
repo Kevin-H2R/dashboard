@@ -50,7 +50,7 @@ export default {
   name: "new-result-form",
   created() {
     axios
-      .get("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/session")
+      .get(process.env.VUE_APP_HOST + ":3000/crossfit/session")
       .then((response) => {
         this.sessions = response.data;
         this.loading = false;
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     upload() {
-      axios.post("http://" + process.env.VUE_APP_HOST + ":3000/crossfit/session", 
+      axios.post(process.env.VUE_APP_HOST + ":3000/crossfit/session", 
         {sessionId: this.selectedSession, performance: this.performance})
         .then((res) => {
           this.$store.commit('addResult', res.data)
